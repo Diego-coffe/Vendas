@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using VendaWebMVC.Models;
+using VendaWebMVC.Models.ViewModels;
 
 namespace VendaWebMVC.Controllers
 {
@@ -17,7 +18,8 @@ namespace VendaWebMVC.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Vendas Web MVC com C#.";
+            ViewData["Aluno"] = "Diego Fernando da Silva";
 
             return View();
         }
