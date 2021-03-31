@@ -37,7 +37,7 @@ namespace VendaWebMVC
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddDbContext<VendaWebMVCContext>(options =>
+            services.AddDbContext<SellerWebMVCContext>(options =>
                     options.UseMySql(Configuration.GetConnectionString("VendaWebMVCContext"), builder =>
                         builder.MigrationsAssembly("VendaWebMVC")));
 

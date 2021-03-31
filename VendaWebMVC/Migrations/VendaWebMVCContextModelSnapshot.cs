@@ -7,7 +7,7 @@ using VendaWebMVC.Data;
 
 namespace VendaWebMVC.Migrations
 {
-    [DbContext(typeof(VendaWebMVCContext))]
+    [DbContext(typeof(SellerWebMVCContext))]
     partial class VendaWebMVCContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

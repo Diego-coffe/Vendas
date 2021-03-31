@@ -7,7 +7,7 @@ using VendaWebMVC.Data;
 
 namespace VendaWebMVC.Migrations
 {
-    [DbContext(typeof(VendaWebMVCContext))]
+    [DbContext(typeof(SellerWebMVCContext))]
     [Migration("20210326191536_Initial")]
     partial class Initial
     {

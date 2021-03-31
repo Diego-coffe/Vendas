@@ -8,7 +8,7 @@ using VendaWebMVC.Data;
 
 namespace VendaWebMVC.Migrations
 {
-    [DbContext(typeof(VendaWebMVCContext))]
+    [DbContext(typeof(SellerWebMVCContext))]
     [Migration("20210330180328_OtherEntities")]
     partial class OtherEntities
     {

@@ -12,9 +12,9 @@ namespace VendaWebMVC.Controllers
 {
     public class DepartmentsController : Controller
     {
-        private readonly VendaWebMVCContext _context;
+        private readonly SellerWebMVCContext _context;
 
-        public DepartmentsController(VendaWebMVCContext context)
+        public DepartmentsController(SellerWebMVCContext context)
         {
             _context = context;
         }

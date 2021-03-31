@@ -7,9 +7,9 @@ using VendaWebMVC.Models;
 
 namespace VendaWebMVC.Data
 {
-    public class VendaWebMVCContext : DbContext
+    public class SellerWebMVCContext : DbContext
     {
-        public VendaWebMVCContext (DbContextOptions<VendaWebMVCContext> options)
+        public SellerWebMVCContext (DbContextOptions<SellerWebMVCContext> options)
             : base(options)
         {
         }

@@ -9,9 +9,9 @@ namespace VendaWebMVC.Data
 {
     public class SeedingService
     {
-        private VendaWebMVCContext _context;
+        private SellerWebMVCContext _context;
 
-        public SeedingService(VendaWebMVCContext context)
+        public SeedingService(SellerWebMVCContext context)
         {
             _context = context;
         }
