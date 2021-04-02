@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VendaWebMVC.Data;
 
 namespace VendaWebMVC.Migrations
 {
     [DbContext(typeof(SellerWebMVCContext))]
-    partial class VendaWebMVCContextModelSnapshot : ModelSnapshot
+    [Migration("20210402162639_DepartamentoComChavePrimaria")]
+    partial class DepartamentoComChavePrimaria
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

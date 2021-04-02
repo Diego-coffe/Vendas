@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using VendaWebMVC.Data;
 using VendaWebMVC.Models;
 using VendaWebMVC.Services;
+using VendaWebMVC.Views.Departments;
 
 namespace VendaWebMVC
 {
@@ -42,10 +43,12 @@ namespace VendaWebMVC
                     options.UseMySql(Configuration.GetConnectionString("VendaWebMVCContext"), builder =>
                         builder.MigrationsAssembly("VendaWebMVC")));
 
-            //Registrando serviço no sistema de aplicações 
+            //* Injeção de dependencia *   >> Registrando serviço no sistema de aplicações 
             services.AddScoped<SeedingService>();
 
             services.AddScoped<SellerService>();
+
+            services.AddScoped<DepartmentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

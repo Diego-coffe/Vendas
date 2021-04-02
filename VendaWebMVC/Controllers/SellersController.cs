@@ -4,17 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VendaWebMVC.Models;
+using VendaWebMVC.Models.ViewModels;
 using VendaWebMVC.Services;
+using VendaWebMVC.Views.Departments;
 
 namespace VendaWebMVC.Controllers
 {
     public class SellersController : Controller
     {
         private readonly SellerService _sellerService;
+        private readonly DepartmentService _departmentService;
 
-        public SellersController(SellerService sellerService)
+        public SellersController(SellerService sellerService, DepartmentService departmentService)
         {
             _sellerService = sellerService;
+            _departmentService = departmentService;
         }
 
         public IActionResult Index()
@@ -26,7 +30,9 @@ namespace VendaWebMVC.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            var departments = _departmentService.FindAll();
+            var viewModel = new SellerFormViewModel {Departments = departments};
+            return View(viewModel);
         }
 
 
