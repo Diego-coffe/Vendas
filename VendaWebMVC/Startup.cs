@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using VendaWebMVC.Data;
 using VendaWebMVC.Models;
+using VendaWebMVC.Services;
 
 namespace VendaWebMVC
 {
@@ -43,6 +44,8 @@ namespace VendaWebMVC
 
             //Registrando serviço no sistema de aplicações 
             services.AddScoped<SeedingService>();
+
+            services.AddScoped<SellerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
