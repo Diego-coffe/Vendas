@@ -27,5 +27,20 @@ namespace VendaWebMVC.Services
             _context.SaveChanges();
         }
 
-    }
+        public Vendedor FindById(int id)
+        {
+            return _context.Vendedor.FirstOrDefault(obj => obj.Id == id);
+        }
+
+        public void Remove(int id)
+        {
+            //Estou fazendo uma busca no banco de dado com o id que informei, e estou guardando no obj 
+            //Depois uso a função remove, que vai receber o id do vendedor e por fim chamo SaveChanges para salvar no banco de dados
+            var obj = _context.Vendedor.Find(id);
+            _context.Vendedor.Remove(obj);
+            _context.SaveChanges();
+        }
+
+
+    }  
 }
