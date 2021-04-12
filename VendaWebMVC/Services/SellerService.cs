@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using VendaWebMVC.Data;
 using VendaWebMVC.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace VendaWebMVC.Services
 {
@@ -29,7 +30,7 @@ namespace VendaWebMVC.Services
 
         public Vendedor FindById(int id)
         {
-            return _context.Vendedor.FirstOrDefault(obj => obj.Id == id);
+            return _context.Vendedor.Include(obj=> obj.Department).FirstOrDefault(obj => obj.Id == id);
         }
 
         public void Remove(int id)
