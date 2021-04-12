@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using VendaWebMVC.Models;
 using VendaWebMVC.Models.ViewModels;
@@ -25,7 +23,7 @@ namespace VendaWebMVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var list =  await _sellerService.FindAllAsync();
+            var list = await _sellerService.FindAllAsync();
 
             return View(list);
         }
@@ -33,7 +31,7 @@ namespace VendaWebMVC.Controllers
         public async Task<IActionResult> Create()
         {
             var departments = await _departmentService.FindAllAsync();
-            var viewModel = new SellerFormViewModel {Departments = departments};
+            var viewModel = new SellerFormViewModel { Departments = departments };
             return View(viewModel);
         }
 
@@ -61,7 +59,7 @@ namespace VendaWebMVC.Controllers
                 return RedirectToAction(nameof(Error), new { message = "Id not provided" });
             }
             var obj = await _sellerService.FindByIdAsync(id.Value);
-            if(obj == null)
+            if (obj == null)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id not found" });
             }
@@ -72,11 +70,18 @@ namespace VendaWebMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
-            await _sellerService.RemoveAsync(id);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _sellerService.RemoveAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch(IntegrityException e)
+            {
+                return RedirectToAction(nameof(Error), new { message = e.Message });
+            }
         }
 
-        public async Task<IActionResult> Details (int? id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -92,12 +97,12 @@ namespace VendaWebMVC.Controllers
 
         public async Task<IActionResult> Edit(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id not provided" });
             }
             var obj = await _sellerService.FindByIdAsync(id.Value);
-            if(obj == null)
+            if (obj == null)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id not found" });
             }

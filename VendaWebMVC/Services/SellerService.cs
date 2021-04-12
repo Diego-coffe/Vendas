@@ -38,9 +38,16 @@ namespace VendaWebMVC.Services
         {
             //Estou fazendo uma busca no banco de dado com o id que informei, e estou guardando no obj 
             //Depois uso a função remove, que vai receber o id do vendedor e por fim chamo SaveChanges para salvar no banco de dados
-            var obj = await _context.Vendedor.FindAsync(id);
-            _context.Vendedor.Remove(obj);
-            await _context.SaveChangesAsync();
+            try
+            {
+                var obj = await _context.Vendedor.FindAsync(id);
+                _context.Vendedor.Remove(obj);
+                await _context.SaveChangesAsync();
+            }
+            catch(DbUpdateException e)
+            {
+                throw new IntegrityException(e.Message);
+            }
         }
 
         public async Task UpdateAsync(Vendedor obj)
