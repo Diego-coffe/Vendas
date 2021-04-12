@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using VendaWebMVC.Models;
 using VendaWebMVC.Models.ViewModels;
 using VendaWebMVC.Services;
+using VendaWebMVC.Services.Exceptions;
 using VendaWebMVC.Views.Departments;
 
 namespace VendaWebMVC.Controllers
@@ -80,6 +81,45 @@ namespace VendaWebMVC.Controllers
                 return NotFound();
             }
             return View(obj);
+        }
+
+        public IActionResult Edit(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+            var obj = _sellerService.FindById(id.Value);
+            if(obj == null)
+            {
+                return NotFound();
+            }
+            List<Department> department = _departmentService.FindAll();
+            SellerFormViewModel viewModel = new SellerFormViewModel { Vendedor = obj, Departments = department };
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, Vendedor vendedor)
+        {
+            if (id != vendedor.Id)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                _sellerService.Update(vendedor);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (NotFoundException)
+            {
+                return NotFound();
+            }
+            catch (DbConcurrencyException)
+            {
+               return BadRequest();
+            }
         }
     }
 }

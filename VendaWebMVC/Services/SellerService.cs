@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using VendaWebMVC.Data;
 using VendaWebMVC.Models;
 using Microsoft.EntityFrameworkCore;
+using VendaWebMVC.Services.Exceptions;
 
 namespace VendaWebMVC.Services
 {
@@ -42,6 +43,21 @@ namespace VendaWebMVC.Services
             _context.SaveChanges();
         }
 
-
+        public void Update(Vendedor obj)
+        {
+            if (!_context.Vendedor.Any(x => x.Id == obj.Id))
+            {
+                throw new NotFoundException("Id not found");
+            }
+            try
+            {
+                _context.Update(obj);
+                _context.SaveChanges();
+            }
+            catch(DbUpdateConcurrencyException e)
+            {
+                throw new DbConcurrencyException(e.Message);
+            }
+        }
     }  
 }
