@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Linq;
+using System.ComponentModel.DataAnnotations;
 
 namespace VendaWebMVC.Models
 {
@@ -10,8 +11,17 @@ namespace VendaWebMVC.Models
     {
         public int Id { get; set; }
         public string Nome { get; set; }
+
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+
+        [Display(Name = "Data de Nascimento")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy}")]
         public DateTime DataNascimento { get; set; }
+
+        [Display(Name = "Salario base")]
+        [DisplayFormat(DataFormatString = "{0:F2}")]
         public double SalarioBase { get; set; }
         public Department Department { get; set; }
         public int DepartmentId { get; set; }
