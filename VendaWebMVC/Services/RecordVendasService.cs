@@ -36,5 +36,25 @@ namespace VendaWebMVC.Services
                 .ToListAsync();
         }
 
+        public async Task<List<IGrouping<Department, RecordVendas>>> FindByDateGroupingAsync(DateTime? minDate, DateTime? maxDate)
+        {
+            var result = from obj in _context.RecordVendas select obj;
+
+            if (minDate.HasValue)
+            {
+                result = result.Where(x => x.Data >= minDate.Value);
+            }
+            if (maxDate.HasValue)
+            {
+                result = result.Where(x => x.Data <= maxDate.Value);
+            }
+            return await result.Include(x => x.Vendedor)
+                .Include(x => x.Vendedor.Department)
+                .OrderByDescending(x => x.Data)
+                .GroupBy(x => x.Vendedor.Department)
+                .ToListAsync();
+        }
+
+
     }
 }
