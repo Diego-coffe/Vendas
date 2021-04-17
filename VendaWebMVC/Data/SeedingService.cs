@@ -37,14 +37,14 @@ namespace VendaWebMVC.Data
             Vendedor v5 = new Vendedor(5, "Carlos", "Carlos@gmail.com", new DateTime(2005 / 6 / 08), 1000.0, d3);
             Vendedor v6 = new Vendedor(6, "Bia", "Bia@gmail.com", new DateTime(1985 / 7 / 7), 1000.0, d2);
 
-            RecordVendas vd1 = new RecordVendas(1, new DateTime(2020/ 3 / 03), 11000.0, StatusVenda.Faturado, v1);
-            RecordVendas vd2 = new RecordVendas(2, new DateTime(2020 / 3 / 03), 2000.0, StatusVenda.Faturado, v2);
-            RecordVendas vd3 = new RecordVendas(3, new DateTime(2020 / 3 / 04), 1000.0, StatusVenda.Cancelado, v3);
-            RecordVendas vd4 = new RecordVendas(4, new DateTime(2020 / 3 / 05), 500.0, StatusVenda.Cancelado, v4);
-            RecordVendas vd5 = new RecordVendas(5, new DateTime(2020 / 3 / 08), 200.0, StatusVenda.Faturado, v5);
-            RecordVendas vd6 = new RecordVendas(6, new DateTime(2020 / 3 / 09), 100.0, StatusVenda.Pendente, v6);
-            RecordVendas vd7 = new RecordVendas(7, new DateTime(2020 / 3 / 11), 300.0, StatusVenda.Faturado, v1);
-            RecordVendas vd8 = new RecordVendas(8, new DateTime(2020 / 3 / 12), 9000.0, StatusVenda.Pendente, v4);
+            RecordVendas vd1 = new RecordVendas(1, new DateTime(2021/ 3 / 3), 11000.0, StatusVenda.Faturado, v1);
+            RecordVendas vd2 = new RecordVendas(2, new DateTime(2021 / 3 / 3), 2000.0, StatusVenda.Faturado, v2);
+            RecordVendas vd3 = new RecordVendas(3, new DateTime(2021 / 3 / 4), 1000.0, StatusVenda.Cancelado, v3);
+            RecordVendas vd4 = new RecordVendas(4, new DateTime(2021 / 3 / 5), 500.0, StatusVenda.Cancelado, v4);
+            RecordVendas vd5 = new RecordVendas(5, new DateTime(2021 / 3 / 8), 200.0, StatusVenda.Faturado, v5);
+            RecordVendas vd6 = new RecordVendas(6, new DateTime(2021 / 3 / 9), 100.0, StatusVenda.Pendente, v6);
+            RecordVendas vd7 = new RecordVendas(7, new DateTime(2021 / 3 / 11), 300.0, StatusVenda.Faturado, v1);
+            RecordVendas vd8 = new RecordVendas(8, new DateTime(2021 / 3 / 12), 9000.0, StatusVenda.Pendente, v4);
 
 
             //Adicionando os objs no banco de dados
